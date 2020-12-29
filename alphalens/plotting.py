@@ -389,8 +389,12 @@ def plot_quantile_returns_bar(mean_ret_by_q,
                     .multiply(DECIMAL_TO_BPS)
                     .plot(kind='bar', title=sc, ax=a))
 
-            a.set(xlabel='', ylabel='Mean Return (bps)',
-                  ylim=(ymin, ymax))
+                a.set(xlabel='', ylabel='Mean Return (bps)',
+                      ylim=(ymin, ymax))
+            else:
+                a.set(xlabel='', title=f"{sc} - N/A",
+                      ylim=(ymin, ymax))
+            
 
         if num_group < len(ax):
             ax[-1].set_visible(False)
