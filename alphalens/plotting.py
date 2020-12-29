@@ -384,9 +384,10 @@ def plot_quantile_returns_bar(mean_ret_by_q,
             ax = ax.flatten()
 
         for a, (sc, cor) in zip(ax, mean_ret_by_q.groupby(level='group')):
-            (cor.xs(sc, level='group')
-                .multiply(DECIMAL_TO_BPS)
-                .plot(kind='bar', title=sc, ax=a))
+            if not cor.xs(sc, level='group').empty:
+                (cor.xs(sc, level='group')
+                    .multiply(DECIMAL_TO_BPS)
+                    .plot(kind='bar', title=sc, ax=a))
 
             a.set(xlabel='', ylabel='Mean Return (bps)',
                   ylim=(ymin, ymax))
