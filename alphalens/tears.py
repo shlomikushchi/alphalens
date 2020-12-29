@@ -324,9 +324,7 @@ def create_returns_tear_sheet(
             base_period=mean_return_quantile_group.columns[0],
         )
 
-        num_groups = len(
-            mean_quant_rateret_group.index.get_level_values("group").unique()
-        )
+        num_groups = len(mean_quant_rateret_group.index.levels[1])
 
         vertical_sections = 1 + (((num_groups - 1) // 2) + 1)
         gf = GridFigure(rows=vertical_sections, cols=2)
