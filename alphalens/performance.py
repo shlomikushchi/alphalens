@@ -930,6 +930,7 @@ def factor_cumulative_returns(factor_data,
     returns = \
         factor_returns(portfolio_data, long_short, group_neutral, equal_weight)
 
+    return cumulative_returns(returns[period])
     return cumulative_returns(returns[period], period)
 
 
